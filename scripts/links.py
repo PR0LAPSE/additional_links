@@ -83,7 +83,7 @@ def ssh_tunnel(host: str = LOCALHOST_RUN) -> str:
     else:
         raise RuntimeError(f"Failed to run {host}")
 
-    print(f"{tunnel_url}")
+    print(f"\033[01;38;05;112m⯈\033[0m Доп. ссылка: {tunnel_url}")
     return tunnel_url
 
 
