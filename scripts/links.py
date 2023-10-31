@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import atexit
-import re
+import re, os
 import subprocess
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -83,8 +83,11 @@ def ssh_tunnel(host: str = LOCALHOST_RUN) -> str:
     else:
         raise RuntimeError(f"Failed to run {host}")
 
-    print(f"\033[01;38;05;112m⯈\033[0m Доп. ссылка: {tunnel_url}")
-    with open('/content/links.txt', 'a') as f: f.write(tunnel_url + '\n')
+    #print(f"\033[01;38;05;112m⯈\033[0m Доп. ссылка: {tunnel_url}")
+    if os.path.exists('/content/links.txt'):
+        with open('/content/links.txt', 'a') as f: f.write(tunnel_url + '\n')
+    else:
+        with open('/content/links.txt', 'w') as f: f.write(tunnel_url + '\n')
     return tunnel_url
 
 
