@@ -84,6 +84,7 @@ def ssh_tunnel(host: str = LOCALHOST_RUN) -> str:
         raise RuntimeError(f"Failed to run {host}")
 
     print(f"\033[01;38;05;112m⯈\033[0m Доп. ссылка: {tunnel_url}")
+    with open('/content/links.txt', 'a') as f: f.write(tunnel_url + '\n')
     return tunnel_url
 
 
